@@ -1,0 +1,18 @@
+{
+    "info": {
+        "name": "Providers",
+        "version": "1.0.0"
+    },
+    "providers": [
+        {
+            "id": "0ac7be2d-cddb-45c8-a687-4d21b7hj7e85",
+            "name": "Multienvase",
+            "website": "https://multienvase.com/",
+            "phone": "46862272",
+            "mobile_phone": "1137368996",
+            "address": "Andalgalá 1920",
+            "social_media": "https://www.instagram.com/multienvase.arg",
+            "email": "info@multienvase.com"
+        }
+    ]
+}
