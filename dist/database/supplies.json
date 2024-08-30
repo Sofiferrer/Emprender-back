@@ -1,0 +1,17 @@
+{
+    "info": {
+        "name": "Supplies",
+        "version": "1.0.0"
+    },
+    "supplies": [
+        {
+            "id": "29f99a5c-7674-4cee-82c4-b4675123fbca",
+            "name": "harina",
+            "quantity": 1000,
+            "unit": "grams",
+            "category": "string",
+            "price": 990,
+            "supplier": "carrefour"
+        }
+    ]
+}

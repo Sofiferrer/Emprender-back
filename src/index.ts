@@ -1,24 +1,9 @@
-import express, { json } from "express";
-import cors from "cors";
-import suppliesRouter from "./routes/supplies-routes";
-import usersRouter from "./routes/users-routes";
+import app from "./app";
+import { config } from "dotenv";
 
-export const app = express();
-const PORT = 8080;
-
-app.use(cors());
-app.use(json());
-app.use("/api/supplies", suppliesRouter);
-app.use("/api/users", usersRouter);
-
-// app.get("/", (request: any, response) => {
-//   response.status(200).json({ message: "soy la raíz" });
-// });
-
-// app.get("/api", (request: any, response) => {
-//   console.log(usersDb, suppliesDb);
-// });
+config();
+const PORT = process.env.PORT;
 
 app.listen(PORT, () => {
-  console.log("Server listening on port:", PORT);
+  console.log(`Server listening in port: ${PORT}`);
 });

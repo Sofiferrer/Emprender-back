@@ -1,0 +1,30 @@
+"use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+const path_1 = __importDefault(require("path"));
+const jsonfile_1 = require("jsonfile");
+class AuthModel {
+    static getFilePath() {
+        return path_1.default.join(__dirname, "../database/auth.json");
+    }
+    static async read() {
+        try {
+            return await (0, jsonfile_1.readFile)(this.getFilePath());
+        }
+        catch (error) {
+            throw error;
+        }
+    }
+    static async write(data) {
+        try {
+            await (0, jsonfile_1.writeFile)(this.getFilePath(), data);
+            return true;
+        }
+        catch (error) {
+            throw error;
+        }
+    }
+}
+exports.default = AuthModel;

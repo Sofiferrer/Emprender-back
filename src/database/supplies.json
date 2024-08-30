@@ -3,16 +3,5 @@
         "name": "Supplies",
         "version": "1.0.0"
     },
-    "supplies": [
-        {
-            "id": "0ac7be2d-cddb-45c8-a687-4d21b7be7e85",
-            "name": "Harina",
-            "quantity": 1000,
-            "unit": "grams",
-            "stock": 2000,
-            "price": 1350,
-            "provider": "uno",
-            "category": "seco"
-        }
-    ]
+    "supplies": []
 }
