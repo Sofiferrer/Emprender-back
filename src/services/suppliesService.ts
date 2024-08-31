@@ -1,7 +1,6 @@
 import { v4 as uuidv4 } from "uuid";
-import UsersModel from "../models/usersModel";
-import { Supply } from "../types/supply";
 import SuppliesModel from "../models/suppliesModel";
+import { Supply } from "../schemas/supply";
 
 class SuppliesService {
   static async read() {
