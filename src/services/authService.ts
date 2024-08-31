@@ -43,6 +43,26 @@ class AuthService {
     }
   }
 
+  static async logout(token) {
+    try {
+      const authDb = await AuthModel.read();
+      const auth = authDb.auth.find((auth) => auth.token == token);
+
+      if (!auth) {
+        const error = new Error("token no encontrado");
+        error["statusCode"] = 404;
+
+        throw error;
+      }
+
+      auth.token = null;
+
+      await AuthModel.write(authDb);
+    } catch (error) {
+      throw error;
+    }
+  }
+
   static async getByUserId(id: string) {
     try {
       const authDb = await AuthModel.read();

@@ -1,15 +1,24 @@
 import { z } from "zod";
 
-export const supplySchema = z.object({
-  id: z.string(),
-  name: z.string(),
-  quantity: z.number(),
-  unit: z.number(),
-  category: z.string(),
-  price: z.number(),
-  supplier: z.string(),
-  picture: z.string(),
-});
+export const supplySchema = z
+  .object({
+    id: z.string().uuid().optional(),
+    name: z
+      .string({
+        required_error: "El nombre es requerido",
+      })
+      .min(3, "El nombre debe tener 3 caracteres como mínimo"),
+    quantity: z.number().nonnegative("La cantidad no puede ser negativa"),
+    unit: z.string().min(1, "La unidad no puede estar vacía"),
+    category: z.string().min(1, "La categoría no puede estar vacía"),
+    price: z.number().positive("El precio debe ser un número positivo"),
+    supplier: z.string().uuid().optional(),
+    picture: z
+      .string()
+      .url("Debe ser una URL válida para la imagen")
+      .optional(),
+  })
+  .strict();
 
 export type Supply = z.infer<typeof supplySchema>;
 
