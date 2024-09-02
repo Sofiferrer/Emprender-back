@@ -1,6 +1,5 @@
 import { Request, Response, NextFunction } from "express";
 import SuppliesService from "../services/suppliesService";
-import { validateSupply, validateUpdateSupply } from "../schemas/supply";
 
 class SuppliesController {
   static async getAll(req: Request, res: Response, next: NextFunction) {
@@ -14,14 +13,8 @@ class SuppliesController {
 
   static async create(req: Request, res: Response, next: NextFunction) {
     try {
-      const validationResult = validateSupply(req.body);
-
-      if (!validationResult.success) {
-        return res.status(400).json({ error: validationResult.error });
-      }
-
-      const id = await SuppliesService.create(validationResult.data);
-      res.status(201).json({ message: "Ingrediente creado", id });
+      const id = await SuppliesService.create(req.body);
+      res.status(201).json({ message: "Ingrediente creado", id: id });
     } catch (error) {
       next(error);
     }
@@ -29,17 +22,8 @@ class SuppliesController {
 
   static async update(req: Request, res: Response, next: NextFunction) {
     try {
-      const validationResult = validateUpdateSupply(req.body);
-
-      if (!validationResult.success) {
-        return res.status(400).json({ error: validationResult.error });
-      }
-
-      const id = await SuppliesService.update(
-        req.params.id,
-        validationResult.data
-      );
-      res.status(200).json({ message: "Ingrediente modificado", id });
+      const id = await SuppliesService.update(req.params.id, req.body);
+      res.status(200).json({ message: "Ingrediente modificado", id: id });
     } catch (error) {
       next(error);
     }
@@ -48,7 +32,7 @@ class SuppliesController {
   static async deleteById(req: Request, res: Response, next: NextFunction) {
     try {
       const id = await SuppliesService.deleteById(req.params.id);
-      res.status(200).json({ message: "Insumo eliminado", id });
+      res.status(200).json({ message: "Insumo eliminado", id: id });
     } catch (error) {
       next(error);
     }

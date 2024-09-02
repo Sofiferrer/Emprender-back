@@ -1,14 +1,25 @@
 import { v4 as uuidv4 } from "uuid";
 import SuppliesModel from "../models/suppliesModel";
-import { Supply } from "../schemas/supply";
+import {
+  Supply,
+  validateSupply,
+  validateUpdateSupply,
+} from "../schemas/supply";
 
 class SuppliesService {
   static async create(data: Supply) {
     try {
+      const validationResult = validateSupply(data);
+      if (!validationResult.success) {
+        const error = new Error("Validación fallida");
+        error["details"] = validationResult.error.errors;
+        throw error;
+      }
       const id = uuidv4();
       const suppliesDb = await SuppliesModel.read();
-      suppliesDb.supplies.push({ id, ...data });
+      suppliesDb.supplies.push({ id, ...validationResult.data });
       SuppliesModel.write(suppliesDb);
+
       return id;
     } catch (error) {
       throw error;
@@ -20,6 +31,7 @@ class SuppliesService {
       const { supplies } = await SuppliesModel.read();
 
       if (!where || Object.keys(where).length === 0) {
+        //si no hay querys devuelvo lista completa
         return supplies;
       }
 
@@ -35,9 +47,17 @@ class SuppliesService {
 
   static async update(id: string, data: Supply) {
     try {
+      const validationResult = validateUpdateSupply(data);
+
+      if (!validationResult.success) {
+        const error = new Error("Validación fallida");
+        error["details"] = validationResult.error.errors;
+        throw error;
+      }
+
       const suppliesDb = await SuppliesModel.read();
       const updatedSupplies = suppliesDb.supplies.map((supply: Supply) =>
-        supply.id === id ? { ...supply, ...data } : supply
+        supply.id === id ? { ...supply, ...validationResult.data } : supply
       );
 
       suppliesDb.supplies = updatedSupplies;
