@@ -24,7 +24,7 @@ class UsersService {
     }
   }
 
-  static async getByEmail(email) {
+  static async getByEmail(email: string) {
     try {
       const usersDb = await UsersService.read();
       const user = usersDb.users.find((user) => user.email === email);

@@ -11,6 +11,7 @@
             "unit": "grams",
             "category": "string",
             "price": 1000,
+            "provider": "",
             "picture": "https://www.google.com/imgres?q=harina%"
         },
         {
@@ -20,15 +21,27 @@
             "unit": "grams",
             "category": "string",
             "price": 1000,
+            "provider": "",
             "picture": "https://www.google.com/imgres?q=harina%"
         },
         {
-            "id": "b8584211-0002-434f-b463-4d13b91aeaca",
-            "name": "azucar",
+            "id": "660afd7c-1980-4e57-ab4d-5519bfeda819",
+            "name": "arcilla blanca",
             "quantity": 1000,
             "unit": "grams",
             "category": "string",
             "price": 1000,
+            "provider": "",
+            "picture": "https://www.google.com/imgres?q=harina%"
+        },
+        {
+            "id": "cd578f88-abf9-4083-a70c-422ce3411a1c",
+            "name": "arcilla",
+            "quantity": 1000,
+            "unit": "grams",
+            "category": "string",
+            "price": 1000,
+            "provider": "",
             "picture": "https://www.google.com/imgres?q=harina%"
         }
     ]

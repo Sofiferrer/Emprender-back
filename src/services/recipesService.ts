@@ -11,6 +11,8 @@ class RecipesService {
     try {
       const validationResult = validateRecipe(data);
       if (!validationResult.success) {
+        console.log("ERRROOORR", validationResult.error);
+
         const error = new Error("Validación fallida");
         error["details"] = validationResult.error.errors;
         throw error;
@@ -53,6 +55,8 @@ class RecipesService {
         error["details"] = validationResult.error.errors;
         throw error;
       }
+
+      const recipe = await this.getById(id); // si la receta no existe arroja error
 
       const recipesDb = await RecipesModel.read();
       const updatedRecipes = recipesDb.recipes.map((recipe: Recipe) =>

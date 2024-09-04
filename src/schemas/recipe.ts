@@ -1,13 +1,13 @@
 import { z } from "zod";
 
 export const ingredientSchema = z.object({
-  supplyId: z.string().uuid(),
+  supplyId: z.string(),
   quantity: z.number().positive("La cantidad debe ser un número positivo"),
 });
 
 export const recipeSchema = z
   .object({
-    id: z.string().uuid(),
+    id: z.string().uuid().optional(),
     name: z.string().min(1, "El nombre no puede estar vacío"),
     ingredients: z.array(ingredientSchema),
     cost: z

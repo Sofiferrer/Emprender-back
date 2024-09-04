@@ -22,7 +22,7 @@ export const supplySchema = z
 
 export type Supply = z.infer<typeof supplySchema>;
 
-export function validateSupply(data) {
+export function validateSupply(data: unknown) {
   return supplySchema.safeParse(data);
 }
 
