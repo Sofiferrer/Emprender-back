@@ -2,7 +2,7 @@ import { z } from "zod";
 
 export const supplySchema = z
   .object({
-    id: z.string().uuid().optional(),
+    id: z.string().optional(),
     name: z
       .string({
         required_error: "El nombre es requerido",
@@ -12,7 +12,7 @@ export const supplySchema = z
     unit: z.string().min(1, "La unidad no puede estar vacía"),
     category: z.string().min(1, "La categoría no puede estar vacía"),
     price: z.number().positive("El precio debe ser un número positivo"),
-    supplier: z.string().uuid().optional(),
+    supplier: z.string().optional(),
     picture: z
       .string()
       .url("Debe ser una URL válida para la imagen")

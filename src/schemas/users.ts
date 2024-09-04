@@ -2,7 +2,7 @@ import { z } from "zod";
 
 export const userSchema = z
   .object({
-    id: z.string().uuid().optional(),
+    id: z.string().optional(),
     name: z
       .string({
         required_error: "El nombre es requerido",

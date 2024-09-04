@@ -7,9 +7,8 @@ const app = express();
 
 // Configura CORS para permitir acceso desde tu frontend
 const corsOptions = {
-  origin: "http://localhost:5173", // Reemplaza con la URL de tu frontend
-  methods: ["GET", "POST", "PUT", "DELETE"], // Métodos permitidos
-  credentials: true, // Si necesitas compartir cookies
+  origin: "http://localhost:5173",
+  methods: ["GET", "POST", "PUT", "DELETE"],
 };
 
 app.use(cors(corsOptions));

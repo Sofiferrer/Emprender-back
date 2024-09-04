@@ -2,7 +2,7 @@ import { z } from "zod";
 
 export const supplierSchema = z
   .object({
-    id: z.string().uuid().optional(),
+    id: z.string().optional(),
     name: z.string().min(1, "El nombre no puede estar vacío"),
     location: z.string().min(1, "La ubicación no puede estar vacía"),
     phone: z.string().optional(),

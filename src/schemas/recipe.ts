@@ -7,7 +7,7 @@ export const ingredientSchema = z.object({
 
 export const recipeSchema = z
   .object({
-    id: z.string().uuid().optional(),
+    id: z.string().optional(),
     name: z.string().min(1, "El nombre no puede estar vacío"),
     ingredients: z.array(ingredientSchema),
     cost: z
