@@ -1,0 +1,15 @@
+{
+    "recipes": [
+        {
+            "id": "8fd63afb-6245-455a-b5f6-5339f960e71e",
+            "name": "nombre editado",
+            "ingredients": [
+                {
+                    "supplyId": "7c904387-dc35-4e08-ndc9-bdab61ecf978",
+                    "quantity": 150
+                }
+            ],
+            "portions": 5
+        }
+    ]
+}

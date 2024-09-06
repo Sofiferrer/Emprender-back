@@ -27,9 +27,16 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importStar(require("express"));
+const cors_1 = __importDefault(require("cors"));
 const routes_1 = __importDefault(require("./routes"));
 const error_handler_1 = __importDefault(require("./middlewares/error-handler"));
 const app = (0, express_1.default)();
+// Configura CORS para permitir acceso desde tu frontend
+const corsOptions = {
+    origin: ["http://localhost:5173", "https://sofiferrer.github.io"],
+    methods: ["GET", "POST", "PUT", "DELETE"],
+};
+app.use((0, cors_1.default)(corsOptions));
 app.use((0, express_1.json)());
 app.use("/status", (req, res) => res.json({ environment: process.env.ENVIRONMENT }));
 app.use("/", routes_1.default);

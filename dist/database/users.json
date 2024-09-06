@@ -3,5 +3,26 @@
         "name": "Users database",
         "users": 2
     },
-    "users": []
+    "users": [
+        {
+            "name": "Nuevo User",
+            "email": "nuevo@gmail.com",
+            "id": "ba080882-cd68-4bf7-bcd6-37658dd26859"
+        },
+        {
+            "name": "Sofi",
+            "email": "sofi@gmail.com",
+            "id": "b68ae8e3-7490-48c5-a081-e0d25740b39e"
+        },
+        {
+            "name": "Sofi",
+            "email": "email@gmail.com",
+            "id": "25693235-b75e-4a67-ac0e-962031d0c558"
+        },
+        {
+            "name": "zod",
+            "email": "zod@gmail.com",
+            "id": "a02bbd28-e374-4e63-80d4-fd3ad6b75c30"
+        }
+    ]
 }

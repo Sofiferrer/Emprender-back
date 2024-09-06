@@ -5,14 +5,18 @@ exports.validateRecipe = validateRecipe;
 exports.validateUpdateRecipe = validateUpdateRecipe;
 const zod_1 = require("zod");
 exports.ingredientSchema = zod_1.z.object({
-    supplyId: zod_1.z.string().uuid(),
+    supplyId: zod_1.z.string(),
     quantity: zod_1.z.number().positive("La cantidad debe ser un número positivo"),
 });
-exports.recipeSchema = zod_1.z.object({
-    id: zod_1.z.string().uuid(),
+exports.recipeSchema = zod_1.z
+    .object({
+    id: zod_1.z.string().optional(),
     name: zod_1.z.string().min(1, "El nombre no puede estar vacío"),
     ingredients: zod_1.z.array(exports.ingredientSchema),
-    cost: zod_1.z.number().positive("El costo debe ser un número positivo").optional(),
+    cost: zod_1.z
+        .number()
+        .positive("El costo debe ser un número positivo")
+        .optional(),
     profit: zod_1.z
         .number()
         .nonnegative("La ganancia no puede ser negativa")
@@ -34,8 +38,12 @@ exports.recipeSchema = zod_1.z.object({
         .number()
         .positive("El precio de venta debe ser un número positivo")
         .optional(),
-    picture: zod_1.z.string().url("Debe ser una URL válida para la imagen").optional(),
-});
+    picture: zod_1.z
+        .string()
+        .url("Debe ser una URL válida para la imagen")
+        .optional(),
+})
+    .strict();
 function validateRecipe(data) {
     return exports.recipeSchema.safeParse(data);
 }

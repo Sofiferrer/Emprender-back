@@ -1,0 +1,24 @@
+{
+    "suppliers": [
+        {
+            "id": "82cee2d2-18d3-40d1-925f-309b3249af80",
+            "name": "El nombre no puede estar vacío",
+            "location": "Palermo",
+            "phone": "",
+            "email": "sofi@live.com",
+            "website": "https://http.cat/",
+            "category": "La",
+            "picture": "z"
+        },
+        {
+            "id": "82cee2d2-18d3-40d1-925f-309b3249af64",
+            "name": "El nombre vacío",
+            "location": "Cordoba",
+            "phone": "",
+            "email": "sofi@live.com",
+            "website": "https://http.cat/",
+            "category": "La",
+            "picture": "z"
+        }
+    ]
+}

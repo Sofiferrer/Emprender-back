@@ -25,6 +25,8 @@ class AuthController {
     }
     static async logout(req, res, next) {
         try {
+            await authService_1.default.logout(req.query.token);
+            res.status(200).json({ message: "Sesion de usuario cerrada" });
         }
         catch (error) {
             next(error);
