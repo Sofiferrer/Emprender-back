@@ -31,13 +31,14 @@ class SuppliesService {
   static async read(where) {
     try {
       const { supplies } = await SuppliesModel.read();
+      console.log(where);
 
       if (!where || Object.keys(where).length === 0) {
         //si no hay querys devuelvo lista completa
         return supplies;
       }
 
-      const filteredSupplies = supplies.filter((supply) =>
+      const filteredSupplies = supplies.filter((supply: Supply) =>
         supply.name.includes(where.name)
       );
 

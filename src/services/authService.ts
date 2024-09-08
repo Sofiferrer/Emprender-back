@@ -15,7 +15,13 @@ class AuthService {
       }
 
       const { name, email, password } = validationResult.data;
-      //const user = await UsersService.getByEmail(email);
+
+      const user = await UsersService.getByEmail(email);
+      if (user) {
+        const error = new Error("El usuario ya existe");
+        error["statusCode"] = 400;
+        throw error;
+      }
 
       const userId = await UsersService.create({ name, email });
       const authDb = await AuthModel.read();

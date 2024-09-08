@@ -28,11 +28,6 @@ class UsersService {
     try {
       const usersDb = await UsersService.read();
       const user = usersDb.users.find((user) => user.email === email);
-      if (!user) {
-        const error = new Error("Usuario no encontrado");
-        error["statusCode"] = 404;
-        throw error;
-      }
       return user;
     } catch (error) {
       throw error;

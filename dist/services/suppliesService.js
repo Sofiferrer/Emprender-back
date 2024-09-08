@@ -29,6 +29,7 @@ class SuppliesService {
     static async read(where) {
         try {
             const { supplies } = await suppliesModel_1.default.read();
+            console.log(where);
             if (!where || Object.keys(where).length === 0) {
                 //si no hay querys devuelvo lista completa
                 return supplies;

@@ -18,7 +18,12 @@ class AuthService {
                 throw error;
             }
             const { name, email, password } = validationResult.data;
-            //const user = await UsersService.getByEmail(email);
+            const user = await usersService_1.default.getByEmail(email);
+            if (user) {
+                const error = new Error("El usuario ya existe");
+                error["statusCode"] = 400;
+                throw error;
+            }
             const userId = await usersService_1.default.create({ name, email });
             const authDb = await authModel_1.default.read();
             const token = (0, createHash_1.default)((0, uuid_1.v4)());
