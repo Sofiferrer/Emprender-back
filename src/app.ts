@@ -8,7 +8,7 @@ const app = express();
 // Configura CORS para permitir acceso desde tu frontend
 const corsOptions = {
   origin: ["http://localhost:5173", "https://sofiferrer.github.io"],
-  methods: ["GET", "POST", "PUT", "DELETE"],
+  methods: ["GET", "POST", "PUT", "DELETE", "PATCH"],
 };
 
 app.use(cors(corsOptions));
