@@ -17,6 +17,7 @@ export const supplySchema = z
       .string()
       .url("Debe ser una URL válida para la imagen")
       .optional(),
+    stock: z.number().optional(),
   })
   .strict();
 

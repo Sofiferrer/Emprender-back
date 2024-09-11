@@ -21,6 +21,7 @@ exports.supplySchema = zod_1.z
         .string()
         .url("Debe ser una URL válida para la imagen")
         .optional(),
+    stock: zod_1.z.number().optional(),
 })
     .strict();
 function validateSupply(data) {

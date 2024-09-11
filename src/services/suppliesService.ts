@@ -13,7 +13,6 @@ class SuppliesService {
       if (!validationResult.success) {
         const error = new Error("Validación fallida");
         error["details"] = validationResult.error.errors;
-        console.log(error);
 
         throw error;
       }
