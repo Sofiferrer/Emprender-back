@@ -38,10 +38,8 @@ exports.recipeSchema = zod_1.z
         .number()
         .positive("El precio de venta debe ser un número positivo")
         .optional(),
-    picture: zod_1.z
-        .string()
-        .url("Debe ser una URL válida para la imagen")
-        .optional(),
+    preparation: zod_1.z.string().optional(),
+    hours: zod_1.z.number().positive(),
 })
     .strict();
 function validateRecipe(data) {

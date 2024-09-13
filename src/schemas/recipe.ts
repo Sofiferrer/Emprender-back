@@ -35,10 +35,8 @@ export const recipeSchema = z
       .number()
       .positive("El precio de venta debe ser un número positivo")
       .optional(),
-    picture: z
-      .string()
-      .url("Debe ser una URL válida para la imagen")
-      .optional(),
+    preparation: z.string().optional(),
+    hours: z.number().positive(),
   })
   .strict();
 
