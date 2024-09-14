@@ -13,8 +13,8 @@ class SuppliesController {
 
   static async create(req: Request, res: Response, next: NextFunction) {
     try {
-      const id = await SuppliesService.create(req.body);
-      res.status(201).json({ message: "Ingrediente creado", id: id });
+      const supply = await SuppliesService.create(req.body);
+      res.status(201).json(supply);
     } catch (error) {
       next(error);
     }

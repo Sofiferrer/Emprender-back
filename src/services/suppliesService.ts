@@ -21,7 +21,7 @@ class SuppliesService {
       suppliesDb.supplies.push({ id, ...validationResult.data });
       SuppliesModel.write(suppliesDb);
 
-      return id;
+      return { id, ...validationResult.data };
     } catch (error) {
       throw error;
     }
