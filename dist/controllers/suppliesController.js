@@ -16,8 +16,8 @@ class SuppliesController {
     }
     static async create(req, res, next) {
         try {
-            const id = await suppliesService_1.default.create(req.body);
-            res.status(201).json({ message: "Ingrediente creado", id: id });
+            const supply = await suppliesService_1.default.create(req.body);
+            res.status(201).json(supply);
         }
         catch (error) {
             next(error);
@@ -25,8 +25,8 @@ class SuppliesController {
     }
     static async update(req, res, next) {
         try {
-            const id = await suppliesService_1.default.update(req.params.id, req.body);
-            res.status(200).json({ message: "Ingrediente modificado", id: id });
+            const updatedSupply = await suppliesService_1.default.update(req.params.id, req.body);
+            res.status(200).json(updatedSupply);
         }
         catch (error) {
             next(error);

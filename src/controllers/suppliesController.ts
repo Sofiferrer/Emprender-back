@@ -22,8 +22,11 @@ class SuppliesController {
 
   static async update(req: Request, res: Response, next: NextFunction) {
     try {
-      const id = await SuppliesService.update(req.params.id, req.body);
-      res.status(200).json({ message: "Ingrediente modificado", id: id });
+      const updatedSupply = await SuppliesService.update(
+        req.params.id,
+        req.body
+      );
+      res.status(200).json(updatedSupply);
     } catch (error) {
       next(error);
     }

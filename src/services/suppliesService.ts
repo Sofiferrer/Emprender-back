@@ -58,13 +58,20 @@ class SuppliesService {
       }
 
       const suppliesDb = await SuppliesModel.read();
+      const findSupply = suppliesDb.supplies.find(
+        (supply: Supply) => supply.id === id
+      );
+      const updatedSupply = { ...findSupply, ...validationResult.data };
+
       const updatedSupplies = suppliesDb.supplies.map((supply: Supply) =>
         supply.id === id ? { ...supply, ...validationResult.data } : supply
       );
 
       suppliesDb.supplies = updatedSupplies;
       SuppliesModel.write(suppliesDb);
-      return id;
+      console.log(updatedSupply);
+
+      return updatedSupply;
     } catch (error) {
       throw error;
     }

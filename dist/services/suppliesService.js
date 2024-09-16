@@ -19,7 +19,7 @@ class SuppliesService {
             const suppliesDb = await suppliesModel_1.default.read();
             suppliesDb.supplies.push({ id, ...validationResult.data });
             suppliesModel_1.default.write(suppliesDb);
-            return id;
+            return { id, ...validationResult.data };
         }
         catch (error) {
             throw error;
@@ -49,10 +49,13 @@ class SuppliesService {
                 throw error;
             }
             const suppliesDb = await suppliesModel_1.default.read();
+            const findSupply = suppliesDb.supplies.find((supply) => supply.id === id);
+            const updatedSupply = { ...findSupply, ...validationResult.data };
             const updatedSupplies = suppliesDb.supplies.map((supply) => supply.id === id ? { ...supply, ...validationResult.data } : supply);
             suppliesDb.supplies = updatedSupplies;
             suppliesModel_1.default.write(suppliesDb);
-            return id;
+            console.log(updatedSupply);
+            return updatedSupply;
         }
         catch (error) {
             throw error;
